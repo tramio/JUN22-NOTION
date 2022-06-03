@@ -27,6 +27,12 @@ describe('nav component', () => {
     const pricingTab = screen.getByText(/pricing/i);
     expect(pricingTab).toBeInTheDocument();
   });  
+
+  it('segments tabs submenus by category; specifically a segment "by team size" should appear in the solutions submenu', () => {
+    render(<Nav />);
+    const byteamsizeText = screen.getByText(/by team size/i);
+    expect(byteamsizeText).toBeInTheDocument();
+  })
 })
 
 describe('app component', () => {
