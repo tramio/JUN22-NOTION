@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Nav from './components/Nav'
+import App from './App';
 
 describe('nav component', () => {
   it('renders navbar', () => {
@@ -26,4 +27,12 @@ describe('nav component', () => {
     const pricingTab = screen.queryByText(/pricing/i);
     expect(pricingTab).toBeInTheDocument();
   });  
+})
+
+describe('app component', () => {
+  it('headers is "one workspace. every team."', () => {
+    render(<App />);
+    const header = screen.getByRole("heading");
+    expect(header.textContent).toMatch(/one workspace. every team./i);
+  })
 })

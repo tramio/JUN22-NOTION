@@ -11,6 +11,14 @@ const Nav = () => {
           header: "Template gallery",
           description: "Setups to get you started",
         },
+        {
+          header: "Customer stories",
+          description: "See how teams use Notion"
+        },
+        {
+          header: "Integrations",
+          description: "Connect your tools to Notion"
+        }
       ],
     },
     {
@@ -55,15 +63,19 @@ const Nav = () => {
 
   return (
     <nav data-testid="navbar">
-      <ul>
+      <ul className="nav-tabs">
         {tabs.map((tab) => (
           <li>
-            <a href={tab.url}>{tab.header}</a>
+            <div className="hover-context">
+              <a href={tab.url}>{tab.header}</a>
+            </div>
             <ul className="subnav">
               {tab.subtabs.map((subtab) => (
                 <li>
-                  <p>{subtab.header}</p>
-                  <p>{subtab.description}</p>
+                  <div className="hover-context">
+                    <p className="subtab-header">{subtab.header}</p>
+                    <p className="subtab-description">{subtab.description}</p>
+                  </div>
                 </li>
               ))}
             </ul>

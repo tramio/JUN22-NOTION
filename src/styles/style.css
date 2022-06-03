@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --base-padding: 20px;
+  --border-color-regular: rgba(0, 0, 0, 0.1);
+  --text-color-extra-light: rgba(0, 0, 0, 0.2);
+  --text-color-light: rgba(0, 0, 0, 0.4);
+  --text-color-medium: rgba(0, 0, 0, 0.6);
+  --text-color-dark: rgba(17, 17, 17, 1);
+  --text-color-regular: rgba(4, 4, 4, 1);
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+}
+h1 {
+  font-size: 74px;
+  font-weight: 669;
+}
+h2 {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 19px;
+  font-weight: 430;
+  color: var(--text-color-medium);
+  line-height: 1.55;
+}
+
+nav {
+  font-size: 15px;
+}
+nav a {
+  font-weight: 544;
+}
+nav .hover-context {
+  padding: 4px 8px;
+}
+nav .hover-context:hover {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.03);
+}
+nav .subtab-header {
+  font-size: 15px;
+  font-weight: 544;
+}
+nav .subtab-description {
+  color: var(--text-color-medium);
+  font-weight: 430;
+  font-size: 14px;
+}
+nav > a {
+  padding-left: 10px;
+  padding-right: 24px;
+}
+.nav-tabs {
+  display: flex;
+}
