@@ -18,7 +18,7 @@ const Nav = () => {
         {
           header: "Integrations",
           description: "Connect your tools to Notion"
-        }
+        },
       ],
     },
     {
@@ -39,48 +39,82 @@ const Nav = () => {
     {
       header: "Solutions",
       url: "",
-      subtabs: [{
-      header: "Enterprise",
-      description: "Advanced features for your org",
-    }, {
-      header: "Small business",
-      description: "Run your team on one tool",
+      subtabs: [
+        {
+          header: "Enterprise",
+          description: "Advanced features for your org",
+        },
+        {
+          header: "Small business",
+          description: "Run your team on one tool",
+        },
+        {
+          header: "Personal",
+          description: "Free for individuals",
+        },
+      ]
     },
-  {
-    header: "Personal",
-    description: "Free for individuals",
-  }] },
-    { header: "Resources", url: "", subtabs: [{
-      header: "Blog",
+    {
+      header: "Resources",
+      url: "",
+      subtabs: [
+        {
+          header: "Blog",
+        },
+        {
+          header: "Guides & Tutorials"
+        },
+        {
+          header: "Webinars"
+        },
+        {
+          header: "Help center"
+        },
+        {
+          header: "API docs"
+        },
+        {
+          header: "Community"
+        },
+      ]
     },
-  {header: "Guides & Tutorials"},
-{header: "Webinars"},
-{header: "Help center"},
-{header: "API docs"},
-{header: "Community"}]},
-    // { header: "Pricing", url: "" },
+    {
+      header: "Pricing",
+      url: "",
+    },
   ];
+
+  function Subtabs(props) {
+    const { tab } = props;
+    const tabHasSubtabs = "subtabs" in tab;
+
+    if (tabHasSubtabs) {
+      return (
+        <ul className="subnav">
+          {tab.subtabs.map((subtab) => (
+            <li>
+              <div className="hover-context">
+                <p className="subtab-header">{subtab.header}</p>
+                <p className="subtab-description">{subtab.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  }
 
   return (
     <nav data-testid="navbar">
       <ul className="nav-tabs">
-        {tabs.map((tab) => (
-          <li>
+        {tabs.map((tab) =>
+        <li>
             <div className="hover-context">
               <a href={tab.url}>{tab.header}</a>
             </div>
-            <ul className="subnav">
-              {tab.subtabs.map((subtab) => (
-                <li>
-                  <div className="hover-context">
-                    <p className="subtab-header">{subtab.header}</p>
-                    <p className="subtab-description">{subtab.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <Subtabs tab={tab}/>
           </li>
-        ))}
+        )}
       </ul>
     </nav>
   );

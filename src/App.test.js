@@ -12,7 +12,7 @@ describe('nav component', () => {
 
   it('renders tabs, specifically the download tab', () => {
     render(<Nav />);
-    const downloadTab = screen.queryByText(/download/i);
+    const downloadTab = screen.getByText(/download/i);
     expect(downloadTab).toBeInTheDocument();
   })
 
@@ -22,9 +22,9 @@ describe('nav component', () => {
     expect(templategallerySubtab).toBeInTheDocument();
   })
 
-  it("renders tabs that have no subtabs", () => {
+  it("renders tabs that have no subtabs, specifically the pricing tab", () => {
     render(<Nav />);
-    const pricingTab = screen.queryByText(/pricing/i);
+    const pricingTab = screen.getByText(/pricing/i);
     expect(pricingTab).toBeInTheDocument();
   });  
 })
@@ -32,7 +32,7 @@ describe('nav component', () => {
 describe('app component', () => {
   it('headers is "one workspace. every team."', () => {
     render(<App />);
-    const header = screen.getByRole("heading");
+    const header = screen.getByRole("heading", {level: 1});
     expect(header.textContent).toMatch(/one workspace. every team./i);
   })
 })
