@@ -65,7 +65,6 @@ nav > a {
 .nav-tabs {
   display: flex;
 }
-
 nav .segment-header {
   color: var(--text-color-medium);
   font-size: 11px;
@@ -77,7 +76,6 @@ nav .segments-container {
   display: flex;
   flex-flow: row;
 }
-
 nav .segment-container {
   min-width: 180px;
   padding: 4px 8px;
