@@ -156,9 +156,9 @@ const Nav = () => {
 
       if (subtabsHaveSegments) {
         return (
-          <ul className="subnav">
+          <ul className="subnav, segments-container">
             {segments.map((segment) => (
-              <div>
+              <div className="segment-container">
                 <li className="segment-header">{segment}</li>
                 <SegmentSubmenu segment={segment} />
               </div>
