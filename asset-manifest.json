@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/JUN22-NOTION/static/css/main.bd6400ee.css",
-    "main.js": "/JUN22-NOTION/static/js/main.0f2cd203.js",
+    "main.css": "/JUN22-NOTION/static/css/main.efdba673.css",
+    "main.js": "/JUN22-NOTION/static/js/main.6f22b581.js",
     "index.html": "/JUN22-NOTION/index.html",
-    "main.bd6400ee.css.map": "/JUN22-NOTION/static/css/main.bd6400ee.css.map",
-    "main.0f2cd203.js.map": "/JUN22-NOTION/static/js/main.0f2cd203.js.map"
+    "main.efdba673.css.map": "/JUN22-NOTION/static/css/main.efdba673.css.map",
+    "main.6f22b581.js.map": "/JUN22-NOTION/static/js/main.6f22b581.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd6400ee.css",
-    "static/js/main.0f2cd203.js"
+    "static/css/main.efdba673.css",
+    "static/js/main.6f22b581.js"
   ]
 }
