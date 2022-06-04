@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from "@testing-library/user-event";
+
 import Nav from './components/Nav'
 import App from './App';
 
@@ -22,6 +24,14 @@ describe('nav component', () => {
     expect(templategallerySubtab).toBeInTheDocument();
   })
 
+  it('subnavs are hidden on render', () => {
+    render(<Nav />);
+    const subnavs = screen.getAllByTestId('subnav');
+    subnavs.forEach((subnav) => {
+      expect(subnav.classList).toContain("hidden");
+    })
+  })
+
   it("renders tabs that have no subtabs, specifically the pricing tab", () => {
     render(<Nav />);
     const pricingTab = screen.getByText(/pricing/i);
@@ -32,6 +42,22 @@ describe('nav component', () => {
     render(<Nav />);
     const byteamsizeText = screen.getByText(/by team size/i);
     expect(byteamsizeText).toBeInTheDocument();
+  })
+
+  it('displays a corresponding subnav on tab hover, specifically "template gallery" on "product" hover', () => {
+    render(<Nav />);
+    const tab = screen.getByText(/product/i);
+    const subnav = // query method
+
+    userEvent.hover(tab);
+    expect(subnav.classList).not.toContain("hidden");
+    // userEvent.unhover(tab);
+    // expect(subnav.classList).toContain("hidden");
+  })
+
+  it('each tab has an id, specifically the download tab', () => {
+    const tab = screen.queryByTestId('download-tab');
+    expect(tab).toBeTruthy();
   })
 })
 

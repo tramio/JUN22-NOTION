@@ -89,3 +89,12 @@ nav .segment-container:not(:first-child) {
 nav .segment-container .hover-context {
   padding: 4px 0;
 }
+.hidden {
+  /* display: none; */
+}
+nav .tab-and-subnav {
+  height: min-content;
+}
+nav.nav-tabs {
+  height: min-content;
+}

@@ -1,4 +1,5 @@
 const Nav = () => {
+  let count = 0;
   const tabs = [
     {
       header: "Product",
@@ -120,10 +121,11 @@ const Nav = () => {
   ];
 
   function PotentialSubtabs(props) {
-    const { tab } = props;
+    let { tabCount, tab } = props;
     const tabHasSubtabs = "subtabs" in tab;
 
     if (tabHasSubtabs) {
+      const subnavId = `subnav-${tabCount}`;
       const subtabsHaveSegments = tab.subtabs.some(
         (subtab) => "segment" in subtab
       );
@@ -135,7 +137,7 @@ const Nav = () => {
         return array;
       }, []);
 
-      function SegmentSubmenu(props) {
+      function SegmentSubnav(props) {
         const { segment } = props;
         const segmentSubtabs = tab.subtabs.filter(
           (subtab) => subtab.segment === segment
@@ -156,18 +158,18 @@ const Nav = () => {
 
       if (subtabsHaveSegments) {
         return (
-          <ul className="subnav, segments-container">
+          <ul id={subnavId} className="subnav, segments-container, hidden">
             {segments.map((segment) => (
               <div className="segment-container">
                 <li className="segment-header">{segment}</li>
-                <SegmentSubmenu segment={segment} />
+                <SegmentSubnav segment={segment} />
               </div>
             ))}
           </ul>
         );
       } else {
         return (
-          <ul className="subnav">
+          <ul id={subnavId} className="subnav, hidden" data-testId="subnav">
             {tab.subtabs.map((subtab) => (
               <li>
                 <div className="hover-context">
@@ -182,17 +184,36 @@ const Nav = () => {
     }
   }
 
+  function displaySubnav(e) {
+    const tabId = e.target.id;
+    // const finalNumbers = tabId . get numbers that precede the hyphen;
+    // const subnavId = `subnav-${finalNumbers}`;
+    // const subnav = document.getElementById(subnavId);
+    // subnav.classList.display = "block";
+
+    // then function hideSubnav(e)
+  }
+
   return (
     <nav data-testid="navbar">
       <ul className="nav-tabs">
-        {tabs.map((tab) => (
-          <li>
-            <div className="hover-context">
-              <a href={tab.url}>{tab.header}</a>
-            </div>
-            <PotentialSubtabs tab={tab} />
-          </li>
-        ))}
+        {tabs.map((tab) => {
+          const tabCount = count;
+          const id = `tab-${tabCount}`;
+          count = count + 1;
+          return (
+            <li className="tab-and-subnav">
+              <div
+                id={id}
+                className="hover-context"
+                onMouseEnter={displaySubnav}
+              >
+                <a href={tab.url}>{tab.header}</a>
+              </div>
+              <PotentialSubtabs tabCount={tabCount} tab={tab} />
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
