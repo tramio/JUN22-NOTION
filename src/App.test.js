@@ -19,24 +19,22 @@ describe('nav component', () => {
   })
 
   it('renders subtabs, specifically the template gallery tab', () => {
-    render(<Nav />);    
+    render(<Nav />);
     const templategallerySubtab = screen.getByText(/template gallery/i);
     expect(templategallerySubtab).toBeInTheDocument();
   })
 
   it('subnavs are hidden on render', () => {
     render(<Nav />);
-    const subnavs = screen.getAllByTestId('subnav');
-    subnavs.forEach((subnav) => {
-      expect(subnav.classList).toContain("hidden");
-    })
+    const subnav1 = screen.getByTestId('subnav-1');
+    expect(subnav1.classList).toContain("hidden");
   })
 
   it("renders tabs that have no subtabs, specifically the pricing tab", () => {
     render(<Nav />);
     const pricingTab = screen.getByText(/pricing/i);
     expect(pricingTab).toBeInTheDocument();
-  });  
+  });
 
   it('segments tabs submenus by category; specifically a segment "by team size" should appear in the solutions submenu', () => {
     render(<Nav />);
@@ -44,21 +42,23 @@ describe('nav component', () => {
     expect(byteamsizeText).toBeInTheDocument();
   })
 
-  it('displays a corresponding subnav on tab hover, specifically "template gallery" on "product" hover', () => {
+  it('displays a corresponding subnav on tab hover, specifically the "template gallery" subtab should appear on "product" hover', () => {
     render(<Nav />);
-    const tab = screen.getByText(/product/i);
-    const subnav = // query method
+    const tab = screen.getByTestId("tab-1");
+    const subnav1 = screen.getByTestId("subnav-1");
 
     userEvent.hover(tab);
-    expect(subnav.classList).not.toContain("hidden");
-    // userEvent.unhover(tab);
-    // expect(subnav.classList).toContain("hidden");
+    expect(subnav1.classList).not.toContain("hidden");
   })
 
-  it('each tab has an id, specifically the download tab', () => {
-    const tab = screen.queryByTestId('download-tab');
-    expect(tab).toBeTruthy();
-  })
+  // it('hides a corresponding subnav on tab mouseLeave', () => {
+  //   render(<Nav />);
+  //   const tab = screen.getByTestId("tab-1");
+  //   const subnav1 = screen.getByTestId("subnav-1");
+
+  //   userEvent.unhover(tab);
+  //   expect(subnav1.classList).toContain("hidden");
+  // })
 })
 
 describe('app component', () => {

@@ -72,10 +72,6 @@ nav .segment-header {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-nav .segments-container {
-  display: flex;
-  flex-flow: row;
-}
 nav .segment-container {
   min-width: 180px;
   padding: 4px 8px;
@@ -90,11 +86,15 @@ nav .segment-container .hover-context {
   padding: 4px 0;
 }
 .hidden {
-  /* display: none; */
+  display: none;
 }
 nav .tab-and-subnav {
   height: min-content;
 }
-nav.nav-tabs {
+nav .nav-tabs {
   height: min-content;
+}
+nav .segments-container {
+  display: flex;
+  flex-flow: row;
 }

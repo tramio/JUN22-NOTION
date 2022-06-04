@@ -158,18 +158,24 @@ const Nav = () => {
 
       if (subtabsHaveSegments) {
         return (
-          <ul id={subnavId} className="subnav, segments-container, hidden">
-            {segments.map((segment) => (
-              <div className="segment-container">
-                <li className="segment-header">{segment}</li>
-                <SegmentSubnav segment={segment} />
-              </div>
-            ))}
+          <ul
+            data-testid={subnavId}
+            id={subnavId}
+            className="subnav, hidden"
+          >
+            <div className="segments-container">
+              {segments.map((segment) => (
+                <div className="segment-container">
+                  <li className="segment-header">{segment}</li>
+                  <SegmentSubnav segment={segment} />
+                </div>
+              ))}
+            </div>
           </ul>
         );
       } else {
         return (
-          <ul id={subnavId} className="subnav, hidden" data-testId="subnav">
+          <ul id={subnavId} className="subnav, hidden" data-testid={subnavId}>
             {tab.subtabs.map((subtab) => (
               <li>
                 <div className="hover-context">
@@ -184,14 +190,19 @@ const Nav = () => {
     }
   }
 
-  function displaySubnav(e) {
-    const tabId = e.target.id;
-    // const finalNumbers = tabId . get numbers that precede the hyphen;
-    // const subnavId = `subnav-${finalNumbers}`;
-    // const subnav = document.getElementById(subnavId);
-    // subnav.classList.display = "block";
-
-    // then function hideSubnav(e)
+  const displaySubnav = (e) => {
+    try {
+      const tabId = e.target.id;
+      const finalNumbers = tabId.match(/\d+/)[0];
+      const subnavId = `subnav-${finalNumbers}`;
+      const subnav = document.getElementById(subnavId);
+      if (subnav.classList.contains("hidden")) {
+        subnav.classList.toggle("hidden");
+      }
+    }
+    catch {
+      console.log("something bad happened");
+    }
   }
 
   return (
@@ -199,14 +210,15 @@ const Nav = () => {
       <ul className="nav-tabs">
         {tabs.map((tab) => {
           const tabCount = count;
-          const id = `tab-${tabCount}`;
+          const tabId = `tab-${tabCount}`;
           count = count + 1;
           return (
             <li className="tab-and-subnav">
               <div
-                id={id}
+                data-testid={tabId}
+                id={tabId}
                 className="hover-context"
-                onMouseEnter={displaySubnav}
+                onMouseOver={displaySubnav}
               >
                 <a href={tab.url}>{tab.header}</a>
               </div>
