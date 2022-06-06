@@ -132,15 +132,18 @@ const Nav = () => {
     return subnav;
   };
 
+  const currentlyDisplayedSubnav = useRef();
+
   const displaySubnav = (e) => {
     const subnav = getSubnav(e);
     if (subnav.classList.contains("hidden")) {
       subnav.classList.toggle("hidden");
     }
+    currentlyDisplayedSubnav.current = subnav;
   };
 
-  const hideSubnav = (e) => {
-    const subnav = getSubnav(e);
+  const hideSubnav = () => {
+    const subnav = currentlyDisplayedSubnav.current;
     if (!subnav.classList.contains("hidden")) {
       subnav.classList.toggle("hidden");
     }
@@ -156,8 +159,7 @@ const Nav = () => {
           data-testid={tabId}
           id={tabId}
           className="hover-context"
-          onMouseEnter={displaySubnav}
-          onMouseLeave={hideSubnav}
+          onMouseOver={displaySubnav}
         >
           <a href={tab.url}>{tab.header}</a>
         </div>
@@ -249,7 +251,7 @@ const Nav = () => {
           const tabId = `tab-${tabCount}`;
           count = count + 1;
           return (
-            <li className="tab-and-subnav">
+            <li className="tab-and-subnav" onMouseLeave={hideSubnav}>
               <Tab tab={tab} tabId={tabId} />
               <PotentialSubnav tabCount={tabCount} tab={tab} />
             </li>
