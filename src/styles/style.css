@@ -34,9 +34,6 @@ h2 {
   line-height: 1.55;
 }
 
-nav {
-  font-size: 15px;
-}
 nav a {
   font-weight: 544;
 }
@@ -97,4 +94,42 @@ nav .nav-tabs {
 nav .segments-container {
   display: flex;
   flex-flow: row;
+}
+nav {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  font-size: 15px;
+}
+.navbar-tabs {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .login-options {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+nav .try-notion {
+  border: 1px solid #be5643;
+  box-shadow: 0 1px 2px rgb(15 15 15 / 10%);
+  color: white;
+  background-color: #e16259;
+}
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 544;
+}
+
+.signup-greeting {
+  font-size: 50px;
+  font-weight: 700;
 }
