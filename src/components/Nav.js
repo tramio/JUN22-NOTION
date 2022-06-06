@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 const Nav = () => {
   let count = 0;
   const tabs = [
@@ -190,10 +192,11 @@ const Nav = () => {
     }
   }
 
+  const tabId = useRef("");
   const displaySubnav = (e) => {
     try {
-      const tabId = e.target.id;
-      const finalNumbers = tabId.match(/\d+/)[0];
+      tabId.current = e.currentTarget.id;
+      let finalNumbers = tabId.current.match(/[0-9]/)[0];
       const subnavId = `subnav-${finalNumbers}`;
       const subnav = document.getElementById(subnavId);
       if (subnav.classList.contains("hidden")) {
@@ -218,7 +221,7 @@ const Nav = () => {
                 data-testid={tabId}
                 id={tabId}
                 className="hover-context"
-                onMouseOver={displaySubnav}
+                onMouseEnter={displaySubnav}
               >
                 <a href={tab.url}>{tab.header}</a>
               </div>
