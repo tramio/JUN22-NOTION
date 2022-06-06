@@ -193,18 +193,26 @@ const Nav = () => {
   }
 
   const tabId = useRef("");
+
+  const getSubnav = (e) => {
+    tabId.current = e.currentTarget.id;
+    let finalNumbers = tabId.current.match(/[0-9]/)[0];
+    const subnavId = `subnav-${finalNumbers}`;
+    const subnav = document.getElementById(subnavId);
+    return subnav;
+  }
+
   const displaySubnav = (e) => {
-    try {
-      tabId.current = e.currentTarget.id;
-      let finalNumbers = tabId.current.match(/[0-9]/)[0];
-      const subnavId = `subnav-${finalNumbers}`;
-      const subnav = document.getElementById(subnavId);
-      if (subnav.classList.contains("hidden")) {
-        subnav.classList.toggle("hidden");
-      }
+    const subnav = getSubnav(e);
+    if (subnav.classList.contains("hidden")) {
+      subnav.classList.toggle("hidden");
     }
-    catch {
-      console.log("something bad happened");
+  }
+
+  const hideSubnav = (e) => {
+    const subnav = getSubnav(e);
+    if (!(subnav.classList.contains("hidden"))) {
+      subnav.classList.toggle("hidden");
     }
   }
 
@@ -222,6 +230,7 @@ const Nav = () => {
                 id={tabId}
                 className="hover-context"
                 onMouseEnter={displaySubnav}
+                onMouseLeave={hideSubnav}
               >
                 <a href={tab.url}>{tab.header}</a>
               </div>

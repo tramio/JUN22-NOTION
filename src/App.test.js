@@ -51,14 +51,15 @@ describe('nav component', () => {
     expect(subnav1.classList).not.toContain("hidden");
   })
 
-  // it('hides a corresponding subnav on tab mouseLeave', () => {
-  //   render(<Nav />);
-  //   const tab = screen.getByTestId("tab-1");
-  //   const subnav1 = screen.getByTestId("subnav-1");
+  it('hides a corresponding subnav on tab mouseLeave', () => {
+    render(<Nav />);
+    const tab = screen.getByTestId("tab-1");
+    const subnav1 = screen.getByTestId("subnav-1");
 
-  //   userEvent.unhover(tab);
-  //   expect(subnav1.classList).toContain("hidden");
-  // })
+    userEvent.hover(tab);
+    userEvent.unhover(tab);
+    expect(subnav1.classList).toContain("hidden");
+  })
 })
 
 describe('app component', () => {
