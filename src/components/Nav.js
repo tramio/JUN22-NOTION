@@ -122,7 +122,56 @@ const Nav = () => {
     },
   ];
 
-  function PotentialSubtabs(props) {
+  const tabId = useRef("");
+
+  const getSubnav = (e) => {
+    tabId.current = e.currentTarget.id;
+    let finalNumbers = tabId.current.match(/[0-9]/)[0];
+    const subnavId = `subnav-${finalNumbers}`;
+    const subnav = document.getElementById(subnavId);
+    return subnav;
+  };
+
+  const displaySubnav = (e) => {
+    const subnav = getSubnav(e);
+    if (subnav.classList.contains("hidden")) {
+      subnav.classList.toggle("hidden");
+    }
+  };
+
+  const hideSubnav = (e) => {
+    const subnav = getSubnav(e);
+    if (!subnav.classList.contains("hidden")) {
+      subnav.classList.toggle("hidden");
+    }
+  };
+
+  const Tab = (props) => {
+    const { tab, tabId } = props;
+    const tabHasSubtabs = "subtabs" in tab;
+
+    if (tabHasSubtabs) {
+      return (
+        <div
+          data-testid={tabId}
+          id={tabId}
+          className="hover-context"
+          onMouseEnter={displaySubnav}
+          onMouseLeave={hideSubnav}
+        >
+          <a href={tab.url}>{tab.header}</a>
+        </div>
+      );
+    } else {
+      return (
+        <div data-testid={tabId} id={tabId} className="hover-context">
+          <a href={tab.url}>{tab.header}</a>
+        </div>
+      );
+    }
+  };  
+
+  function PotentialSubnav(props) {
     let { tabCount, tab } = props;
     const tabHasSubtabs = "subtabs" in tab;
 
@@ -192,30 +241,6 @@ const Nav = () => {
     }
   }
 
-  const tabId = useRef("");
-
-  const getSubnav = (e) => {
-    tabId.current = e.currentTarget.id;
-    let finalNumbers = tabId.current.match(/[0-9]/)[0];
-    const subnavId = `subnav-${finalNumbers}`;
-    const subnav = document.getElementById(subnavId);
-    return subnav;
-  }
-
-  const displaySubnav = (e) => {
-    const subnav = getSubnav(e);
-    if (subnav.classList.contains("hidden")) {
-      subnav.classList.toggle("hidden");
-    }
-  }
-
-  const hideSubnav = (e) => {
-    const subnav = getSubnav(e);
-    if (!(subnav.classList.contains("hidden"))) {
-      subnav.classList.toggle("hidden");
-    }
-  }
-
   return (
     <nav data-testid="navbar">
       <ul className="nav-tabs">
@@ -225,16 +250,8 @@ const Nav = () => {
           count = count + 1;
           return (
             <li className="tab-and-subnav">
-              <div
-                data-testid={tabId}
-                id={tabId}
-                className="hover-context"
-                onMouseEnter={displaySubnav}
-                onMouseLeave={hideSubnav}
-              >
-                <a href={tab.url}>{tab.header}</a>
-              </div>
-              <PotentialSubtabs tabCount={tabCount} tab={tab} />
+              <Tab tab={tab} tabId={tabId} />
+              <PotentialSubnav tabCount={tabCount} tab={tab} />
             </li>
           );
         })}
