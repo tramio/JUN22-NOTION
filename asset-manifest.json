@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/JUN22-NOTION/static/css/main.baed15f2.css",
-    "main.js": "/JUN22-NOTION/static/js/main.a938d97a.js",
+    "main.css": "/JUN22-NOTION/static/css/main.ddddb6d1.css",
+    "main.js": "/JUN22-NOTION/static/js/main.8fbd2df4.js",
+    "static/media/homepage-image.png": "/JUN22-NOTION/static/media/homepage-image.5a214ca11bd8067ed28c.png",
     "index.html": "/JUN22-NOTION/index.html",
-    "main.baed15f2.css.map": "/JUN22-NOTION/static/css/main.baed15f2.css.map",
-    "main.a938d97a.js.map": "/JUN22-NOTION/static/js/main.a938d97a.js.map"
+    "main.ddddb6d1.css.map": "/JUN22-NOTION/static/css/main.ddddb6d1.css.map",
+    "main.8fbd2df4.js.map": "/JUN22-NOTION/static/js/main.8fbd2df4.js.map"
   },
   "entrypoints": [
-    "static/css/main.baed15f2.css",
-    "static/js/main.a938d97a.js"
+    "static/css/main.ddddb6d1.css",
+    "static/js/main.8fbd2df4.js"
   ]
 }
