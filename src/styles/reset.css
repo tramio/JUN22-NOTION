@@ -162,10 +162,7 @@ button {
   border-width: 1px;
   font-family: inherit;
   font-size: inherit;
-}
-button:hover {
-  background-color: rgba(28, 72, 110, 0.4);
-  transition: all 1s;
+  box-shadow: 0 1px 2px rgb(15 15 15 / 10%);
 }
 
 /* FONTS */

@@ -127,6 +127,9 @@ button {
   color: white;
   background-color: #e16259;
 }
+button:hover {
+  background-color: #cf534a;
+}
 
 .signup-greeting {
   font-size: 50px;
@@ -154,4 +157,9 @@ button {
 .trusted-by-logos-container {
   display: flex;
   flex-flow: row;
+  max-width: 400px;
+}
+.trusted-by-logo {
+  max-width: 114px;
+  margin: 10px;
 }
