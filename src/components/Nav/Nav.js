@@ -173,7 +173,7 @@ const Nav = () => {
           className="hover-context"
           onMouseOver={displaySubnav}
         >
-          <a href={tab.url}>{tab.header}</a>
+          <a className="tab-link" href={tab.url}>{tab.header}</a>
         </div>
       );
     } else {
@@ -187,43 +187,47 @@ const Nav = () => {
 
   return (
     <nav data-testid="navbar">
-      <Link to="/">
+      <div class="nav-inner">
         <NotionLogo />
-      </Link>
-      <div className="navbar-tabs">
-        <ul className="nav-tabs">
-          {tabs.map((tab) => {
-            const tabCount = count;
-            const tabId = `tab-${tabCount}`;
-            const key = uniqid();
-            count = count + 1;
-            return (
-              <li key={key} className="tab-and-subnav" onMouseLeave={hideSubnav}>
-                <Tab tab={tab} tabId={tabId} />
-                <PotentialSubnav tabCount={tabCount} tab={tab} />
-              </li>
-            );
-          })}
-        </ul>
-        <div className="login-options">
-          <ul className="nav-tabs">
-            {moreTabs.map((tab) => {
-              const tabCount = count;
-              const tabId = `tab-${tabCount}`;
-              const key = uniqid();
-              count = count + 1;
-              return (
-                <li key={key}>
-                  <Tab tab={tab} tabId={tabId} />
-                </li>
-              );
-            })}
-          </ul>
-          <Link to="signup">
-            <button type="button" className="try-notion">
-              Try Notion free
-            </button>
-          </Link>
+        <div className="desktop-actions">
+          <div class="nav-left">
+            <ul className="nav-tabs">
+              {tabs.map((tab) => {
+                const tabCount = count;
+                const tabId = `tab-${tabCount}`;
+                const key = uniqid();
+                count = count + 1;
+                return (
+                  <li key={key} className="tab-and-subnav" onMouseLeave={hideSubnav}>
+                    <Tab tab={tab} tabId={tabId} />
+                    <PotentialSubnav tabCount={tabCount} tab={tab} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="nav-right">
+            <ul className="nav-tabs">
+              {moreTabs.map((tab) => {
+                const tabCount = count;
+                const tabId = `tab-${tabCount}`;
+                const key = uniqid();
+                count = count + 1;
+                return (
+                  <li key={key}>
+                    <Tab tab={tab} tabId={tabId} />
+                  </li>
+                );
+              })}
+            </ul>
+            <div class="cta-item">
+              <Link to="signup">
+                <button type="button" className="try-notion">
+                  Try Notion free
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

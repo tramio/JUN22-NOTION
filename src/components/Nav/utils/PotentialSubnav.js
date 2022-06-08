@@ -25,7 +25,7 @@ const SegmentSubnav = (props) => {
 const SubnavWithSegments = (props) => {
   const { subnavId, segments, tab } = props;
   return (
-    <ul data-testid={subnavId} id={subnavId} className="subnav, hidden">
+    <ul data-testid={subnavId} id={subnavId} className="subnav hidden">
       <div className="segments-container">
         {segments.map((segment) => {
           const key = uniqid();
@@ -44,7 +44,7 @@ const SubnavWithSegments = (props) => {
 const SubnavWithoutSegments = (props) => {
   const { subnavId, tab } = props;
   return (
-    <ul id={subnavId} className="subnav, hidden" data-testid={subnavId}>
+    <ul id={subnavId} className="subnav hidden" data-testid={subnavId}>
       {tab.subtabs.map((subtab) => {
         const key = uniqid();
         return (

@@ -10,7 +10,9 @@
   --text-color-regular: rgba(4, 4, 4, 1);
 }
 body {
+  padding: 0 80px;
   font-family: "Inter", sans-serif;
+  background-color: #fffefc;
 }
 
 h1,
@@ -59,9 +61,6 @@ nav > a {
   padding-left: 10px;
   padding-right: 24px;
 }
-.nav-tabs {
-  display: flex;
-}
 nav .segment-header,
 .small-header {
   color: var(--text-color-medium);
@@ -86,33 +85,36 @@ nav .segment-container .hover-context {
 .hidden {
   display: none;
 }
-nav .tab-and-subnav {
-  height: min-content;
-}
 nav .nav-tabs {
-  height: min-content;
+  height: 30px;
+  display: flex;
 }
 nav .segments-container {
   display: flex;
   flex-flow: row;
 }
-nav {
-  width: 100%;
+.nav-inner {
   height: 80px;
+  width: 100%;
+  position: sticky;
   display: flex;
   flex-flow: row;
   align-items: center;
   font-size: 15px;
+  background-color: white;
+  border: 1px solid white;
 }
-.navbar-tabs {
+.desktop-actions {
+  height: 50px;
   width: 100%;
+  margin-left: 20px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
 }
 
-nav .login-options {
+nav .nav-right {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -137,6 +139,7 @@ button:hover {
 }
 
 .welcome-container {
+  margin: 80px 0;
   display: flex;
   flex-flow: row;
 }
@@ -162,4 +165,39 @@ button:hover {
 .trusted-by-logo {
   max-width: 114px;
   margin: 10px;
+}
+
+.tab-link {
+  height: 30px;
+  padding-right: 24px;
+}
+.tab-and-subnav {
+  height: 30px;
+  width: min-content;
+  max-width: 114px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.subnav {
+  width: min-content;
+  min-width: 180px;
+  position: absolute;
+  top: 50px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 18px rgb(0 0 0 / 4%),
+    0px 2.025px 7.84688px rgb(0 0 0 / 3%), 0px 0.8px 2.925px rgb(0 0 0 / 2%),
+    0px 0.175px 1.04062px rgb(0 0 0 / 1%);
+  transform: scale(0.97);
+  -webkit-transition: ease, -webkit-transform 150ms ease;
+  transition: 1000ms ease;
+  transform-origin: top left;
+}
+.nav-left,
+.nav-right *,
+.cta-item {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
