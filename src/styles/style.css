@@ -93,6 +93,9 @@ nav .segments-container {
   display: flex;
   flex-flow: row;
 }
+nav {
+  background-color: white;
+}
 .nav-inner {
   height: 80px;
   width: 100%;
@@ -101,7 +104,6 @@ nav .segments-container {
   flex-flow: row;
   align-items: center;
   font-size: 15px;
-  background-color: white;
   border: 1px solid white;
 }
 .desktop-actions {
@@ -193,6 +195,7 @@ button:hover {
   -webkit-transition: ease, -webkit-transform 150ms ease;
   transition: 1000ms ease;
   transform-origin: top left;
+  background-color: white;
 }
 .nav-left,
 .nav-right *,
