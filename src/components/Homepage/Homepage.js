@@ -1,8 +1,9 @@
-import homepageImage from './assets/homepage-image.png';
-import curologyLogo from './assets/logos/curology.png';
-import mixpanelLogo from './assets/logos/mixpanel.png';
-import matchgroupLogo from './assets/logos/matchgroup.png';
-import headspaceLogo from './assets/logos/headspace.png';
+import uniqid from 'uniqid';
+import homepageImage from './../../assets/homepage-image.png';
+import curologyLogo from "./../../assets/logos/curology.png";
+import mixpanelLogo from "./../../assets/logos/mixpanel.png";
+import matchgroupLogo from "./../../assets/logos/matchgroup.png";
+import headspaceLogo from "./../../assets/logos/headspace.png";
 
 const Homepage = () => {
   const logos = [curologyLogo, mixpanelLogo, matchgroupLogo, headspaceLogo];
@@ -20,8 +21,9 @@ const Homepage = () => {
           <p className="small-header">Trusted by teams at</p>
           <ul className="trusted-by-logos-container">
             {logos.map((logo) => {
+              const key = uniqid();
               return (
-                <li className="trusted-by-logo-container">
+                <li key={key} className="trusted-by-logo-container">
                   <img className="trusted-by-logo" src={logo} alt=""></img>
                 </li>
               );
