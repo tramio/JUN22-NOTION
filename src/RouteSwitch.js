@@ -5,7 +5,7 @@ import SignUp from "./components/SignUp/SignUp";
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/JUN22-NOTION">
       <Nav />
       <Routes>
         <Route path="/" element={<Homepage />} />
